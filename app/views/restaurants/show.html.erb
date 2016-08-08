@@ -1,0 +1,29 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <%= @restaurant.name %>
+</h1>
+
+<p>
+  <%= link_to @restaurant.url, url_with_protocol(@restaurant.url), :target => '_blank'%>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @restaurant.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @restaurant.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Back', restaurants_path %>
+</div>
