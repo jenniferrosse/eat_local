@@ -1,6 +1,7 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
 
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Back', restaurants_path %>
 <h1>
   <%= @restaurant.name %>
 </h1>
@@ -12,16 +13,6 @@
 <p>
   <strong>Address:</strong>
   <%= @restaurant.address %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @restaurant.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @restaurant.longitude %>
 </p>
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
@@ -45,7 +36,12 @@
     }
   );
 </script>
-
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
+<br>
+<br>
+<h4>Nearby Restaurants You Might Want to Try</h4>
+  <ul>
+    <% for restaurant in @restaurant.nearbys(5) %>
+      <li><%= link_to restaurant.name, restaurant %> (<%= restaurant.distance.round(2) %> miles)</li>
+    <% end %>
+  </ul>
 </div>
